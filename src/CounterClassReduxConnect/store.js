@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { INCREMENT, DECREMENT } from './actions';
+import { INCREMENT, DECREMENT, TOGGLE_LOADING } from './actions';
 import thunk from 'redux-thunk';
 
 const initialState = {
   count: 0,
+  loading: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,19 +20,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         count: state.count - 1,
       };
+    case TOGGLE_LOADING:
+      return {
+        ...state,
+        loading: !state.loading,
+      };
   }
 
   return state;
 };
 
-const customMiddleWare = (store) => (next) => (action) => {
-  console.log('Middleware triggered:', action);
-  next(action);
-};
-
-const store = createStore(
+const connectedStore = createStore(
   reducer,
-  compose(composeWithDevTools(applyMiddleware(thunk, customMiddleWare)))
+  compose(composeWithDevTools(applyMiddleware(thunk)))
 );
 
-export default store;
+export default connectedStore;

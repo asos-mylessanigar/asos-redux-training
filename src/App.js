@@ -1,8 +1,10 @@
 import React from 'react';
 import CounterClassNoRedux from './CounterClassNoRedux';
 import CounterClassRedux from './CounterClassRedux';
+import CounterClassReduxConnect from './CounterClassReduxConnect';
 import { Provider } from 'react-redux';
 import store from './CounterClassRedux/store';
+import connectedStore from './CounterClassReduxConnect/store';
 import './App.scss';
 
 const App = () => {
@@ -12,6 +14,9 @@ const App = () => {
       <CounterClassNoRedux />
       <Provider store={store}>
         <CounterClassRedux />
+      </Provider>
+      <Provider store={connectedStore}>
+        <CounterClassReduxConnect />
       </Provider>
     </div>
   );
