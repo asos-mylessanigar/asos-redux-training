@@ -1,37 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useCount } from './count-context';
 
-const CounterFCHooksNoRedux = () => {
-  const [count, setCount] = useState(0);
+const CounterFCContext = () => {
+  const {
+    state: { count },
+  } = useCount();
+  const { dispatch } = useCount();
 
   useEffect(() => {
     handleIncrememnt();
   }, []);
 
   const handleIncrememnt = () => {
-    setCount(count + 1);
+    dispatch({ type: 'increment' });
   };
 
   const handleDecrement = () => {
-    count > 0 && setCount(count - 1);
+    count > 0 && dispatch({ type: 'decrement' });
   };
 
   return (
     <section className="section">
       <h2 className="subtitle">
-        FC w/Hooks.
+        FC w/Context.
         <br />
         <strong>No Redux</strong>.
       </h2>
       <p className="mb-2"> Count: {count}</p>
       <button
-        className="button is-danger mr-2"
+        className="button is-dark mr-2"
         type="button"
         onClick={handleIncrememnt}
       >
         <i className="fa fa-plus" aria-hidden="true"></i>
       </button>
       <button
-        className="button is-danger"
+        className="button is-dark"
         type="button"
         onClick={handleDecrement}
       >
@@ -41,4 +45,4 @@ const CounterFCHooksNoRedux = () => {
   );
 };
 
-export default CounterFCHooksNoRedux;
+export default CounterFCContext;

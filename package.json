@@ -17,6 +17,7 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.7.1",
     "bulma": "^0.9.3",
     "css-loader": "^6.5.1",
     "eslint": "^8.7.0",

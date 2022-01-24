@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from './counterSlice';
 
-const CounterFCHooksNoRedux = () => {
-  const [count, setCount] = useState(0);
+const CounterFCHooksReduxToolkit = () => {
+  const { count } = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     handleIncrememnt();
   }, []);
 
   const handleIncrememnt = () => {
-    setCount(count + 1);
+    dispatch(increment());
   };
 
   const handleDecrement = () => {
-    count > 0 && setCount(count - 1);
+    count > 0 && dispatch(decrement());
   };
 
   return (
@@ -20,18 +23,18 @@ const CounterFCHooksNoRedux = () => {
       <h2 className="subtitle">
         FC w/Hooks.
         <br />
-        <strong>No Redux</strong>.
+        <strong>Redux Toolkit</strong>.
       </h2>
       <p className="mb-2"> Count: {count}</p>
       <button
-        className="button is-danger mr-2"
+        className="button is-link mr-2"
         type="button"
         onClick={handleIncrememnt}
       >
         <i className="fa fa-plus" aria-hidden="true"></i>
       </button>
       <button
-        className="button is-danger"
+        className="button is-link"
         type="button"
         onClick={handleDecrement}
       >
@@ -41,4 +44,4 @@ const CounterFCHooksNoRedux = () => {
   );
 };
 
-export default CounterFCHooksNoRedux;
+export default CounterFCHooksReduxToolkit;

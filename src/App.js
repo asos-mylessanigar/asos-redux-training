@@ -7,6 +7,10 @@ import store from './CounterClassRedux/store';
 import connectedStore from './CounterClassReduxConnect/store';
 import './App.scss';
 import CounterFCHooksNoRedux from './CounterFCHooksNoRedux';
+import CounterFCContext from './CounterFCContext/CounterFCContext';
+import { CountProvider } from './CounterFCContext/count-context';
+import CounterFCHooksReduxToolkit from './CounterFCHooksReduxToolkit';
+import tkstore from './CounterFCHooksReduxToolkit/store';
 
 const App = () => {
   return (
@@ -14,26 +18,36 @@ const App = () => {
       <h1 className="title p-2 has-background-dark has-text-light">
         Redux demo
       </h1>
-      <div class="columns">
-        <div class="column">
+      <div className="columns">
+        <div className="column">
           <CounterClassNoRedux />
         </div>
 
-        <div class="column">
+        <div className="column">
           <Provider store={store}>
             <CounterClassRedux />
           </Provider>
         </div>
 
-        <div class="column">
+        <div className="column">
           <Provider store={connectedStore}>
             <CounterClassReduxConnect />
           </Provider>
         </div>
       </div>
       <div className="columns">
-        <div class="column">
+        <div className="column">
           <CounterFCHooksNoRedux />
+        </div>
+        <div className="column">
+          <CountProvider>
+            <CounterFCContext />
+          </CountProvider>
+        </div>
+        <div className="column">
+          <Provider store={tkstore}>
+            <CounterFCHooksReduxToolkit />
+          </Provider>
         </div>
       </div>
     </div>
