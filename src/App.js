@@ -11,15 +11,31 @@ import CounterFCHooksNoRedux from './CounterFCHooksNoRedux';
 const App = () => {
   return (
     <div className="container">
-      <h1 className="title p-2 has-background-warning">Redux demo</h1>
-      <CounterClassNoRedux />
-      <Provider store={store}>
-        <CounterClassRedux />
-      </Provider>
-      <Provider store={connectedStore}>
-        <CounterClassReduxConnect />
-      </Provider>
-      <CounterFCHooksNoRedux />
+      <h1 className="title p-2 has-background-dark has-text-light">
+        Redux demo
+      </h1>
+      <div class="columns">
+        <div class="column">
+          <CounterClassNoRedux />
+        </div>
+
+        <div class="column">
+          <Provider store={store}>
+            <CounterClassRedux />
+          </Provider>
+        </div>
+
+        <div class="column">
+          <Provider store={connectedStore}>
+            <CounterClassReduxConnect />
+          </Provider>
+        </div>
+      </div>
+      <div className="columns">
+        <div class="column">
+          <CounterFCHooksNoRedux />
+        </div>
+      </div>
     </div>
   );
 };
