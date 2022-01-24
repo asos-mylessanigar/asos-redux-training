@@ -32,14 +32,14 @@ class CounterClassReduxConnect extends React.Component {
           </h2>
           <p className="mb-2"> Count: {this.props.count}</p>
           <button
-            className="button is-info mr-2"
+            className="button is-warning mr-2"
             type="button"
             onClick={() => this.props.incrementDispatcher()}
           >
             <i className="fa fa-plus" aria-hidden="true"></i>
           </button>
           <button
-            className="button is-info"
+            className="button is-warning"
             type="button"
             onClick={() => this.handleDecrement()}
           >

@@ -38,10 +38,18 @@ class CounterClassNoRedux extends React.Component {
           <strong>No Redux</strong>.
         </h2>
         <p className="mb-2"> Count: {this.state.count}</p>
-        <button className="button is-primary mr-2" type="button" onClick={this.handleIncrememnt}>
+        <button
+          className="button is-primary mr-2"
+          type="button"
+          onClick={this.handleIncrememnt}
+        >
           <i className="fa fa-plus" aria-hidden="true"></i>
         </button>
-        <button className="button is-primary" type="button" onClick={this.handleDecrement}>
+        <button
+          className="button is-primary"
+          type="button"
+          onClick={this.handleDecrement}
+        >
           <i className="fa fa-minus" aria-hidden="true"></i>
         </button>
       </section>

@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from './CounterClassRedux/store';
 import connectedStore from './CounterClassReduxConnect/store';
 import './App.scss';
+import CounterFCHooksNoRedux from './CounterFCHooksNoRedux';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <Provider store={connectedStore}>
         <CounterClassReduxConnect />
       </Provider>
+      <CounterFCHooksNoRedux />
     </div>
   );
 };
